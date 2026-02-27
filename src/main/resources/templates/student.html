@@ -2,9 +2,43 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Student List</title>
+    <title>Students</title>
+    <link rel="stylesheet" th:href="@{style.css}">
 </head>
-<body>
-
-</body>
+    <body>
+        <div class="container">
+            <header class="header">
+                <h1>Student Manager</h1>
+                <a class="btn" href="/studends/new">+ Add Student</a>
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>First</th>
+                            <th>Last</th>
+                            <th>Email</th>
+                            <th>Major</th>
+                            <th class="actions">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="s : ${students}">
+                        <td th:text="${s.firstName}"></td>
+                        <td th:text="${s.lastName}"></td>
+                        <td th:text="${s.email}"></td>
+                        <td th:text="${s.major}"></td>
+                        <td class="actions">
+                            <a class="btn btn-secondary" th:href="@{/students/edit/{id}(id=${s.id})}">Edit</a>
+                            <a class="btn btn-danger" th:href="@{/students/delete/{id}(id=${s.id})}" onclick="return confirm('Delete this student?');">Delete</a>
+                        </td>
+                    </tr>
+                    
+                    <tr th:if="${#lists.isEmpty(students)}">
+                        <td colspan="5" class="empty">No students yet. Click "Add Student".</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </header>
+        </div>
+    </body>
 </html>

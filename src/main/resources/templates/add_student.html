@@ -1,10 +1,1 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Student</title>
-</head>
-<body>
-
-</body>
-</html>
+<!DOCTYPE html><html lang="en" xmlns:th="http://www.thymeleaf.org"><head>    <meta charset="UTF-8">    <title>Add Student</title>    <link rel="stylesheet" th:href="@{style.css}"></head>    <body>        <div class="container">            <header class="header">                <h1>Add Student</h1>                <a class="btn btn-secondary" href="/students">Back</a>            </header>                        <form class="form" th:action="@{/students}" th:object="${student}" method="post">                <label>First Name</label>                <input type="text" th:field="*{firstName}" required />                                <label>Last Name</label>                <input type="text" th:field="*{lastName}" required />                                <label>Email</label>                <input type="email" th:field="*{email}" required />                                <label>Major</label>                <input type="text" th:field="*{major}" required />             </form>        </div></body></html>
