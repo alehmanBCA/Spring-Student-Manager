@@ -1,4 +1,4 @@
-package org.example.studentmanager.controller;
+package org.example.studentmanager.model;
 
 import jakarta.persistence.*;
 
